@@ -87,7 +87,7 @@ def fenci_dir_pandas(path, save_path, field_list=['content'], field_label='label
         if field_label != '':
             # df['labels'] = df[field_label].apply(lambda x: x.strip())
             df['labels'] = df[field_label]
-            f = open(save_path + "/" + ff + "-seg.txt", "w+")
+            f = open(save_path + "/" + ff + "-seg.txt", "w+", encoding='utf-8')
             f.write('labels,contents\n')
             for index, row in df.iterrows():
                 line = str(row['labels']) + ',' + row['text'] + '\n'
