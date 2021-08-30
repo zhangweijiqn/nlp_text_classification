@@ -1,9 +1,6 @@
 import os
 import sys
 from collections import Counter
-import h5py
-import pickle
-import numpy as np
 failed_files = []
 label_sep = "、"
 
@@ -317,7 +314,7 @@ def gen_label_vocabulary(file_path, save_path, field_name='labels', multi_label=
     label_list = c_labels.most_common()
     label2index = {}
     index2label = {}
-    label_target_object = open(save_path, 'w')
+    label_target_object = open(save_path, 'w', encoding='utf-8')
     for i, label_freq in enumerate(label_list):
         label, freq = label_freq
         label2index[label] = i
@@ -360,7 +357,7 @@ def gen_word_vocabulary(file_path, save_path):
     word_list = c_words.most_common()
     word2index = {}
     index2word = {}
-    label_target_object = open(save_path, 'w')
+    label_target_object = open(save_path, 'w', encoding='utf-8')
     for i, w_freq in enumerate(word_list):
         w, freq = w_freq
         word2index[w] = i

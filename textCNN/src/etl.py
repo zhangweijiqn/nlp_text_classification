@@ -31,7 +31,7 @@ def getFilelist(path):
 def read_file(input_file):
     print('opening file: ', input_file)
     try:
-        df = pd.read_csv(input_file, header=0, low_memory=False)  # header=None表示原始文件数据没有列索引，这样的话read_csv会自动加上列索引
+        df = pd.read_csv(input_file, header=0, low_memory=False, encoding='utf-8')  # header=None表示原始文件数据没有列索引，这样的话read_csv会自动加上列索引
     except Exception as e:
         print("===================================> read_file " + input_file + " exception: " + str(e))
         return None
@@ -94,7 +94,7 @@ def fenci_dir_pandas(path, save_path, field_list=['content'], field_label='label
                 f.write(line)
             f.close()
         else:
-            f = open(save_path + "/" + ff + "-seg.txt", "w+")
+            f = open(save_path + "/" + ff + "-seg.txt", "w+", encoding='utf-8')
             f.write('contents\n')
             for index, row in df.iterrows():
                 line = row['text'] + '\n'
